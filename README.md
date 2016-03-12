@@ -19,6 +19,12 @@ Default configurations are to:
 
 This image uses Alpine Linux. If you want to use Ubuntu based image, use `ubuntu-base` tag.
 
+## 修改
+
+  - 增加 docker-compose
+  - 修改 Dockerfile 增加 `fluent-plugin-mongo`
+  - 本地配置文件放在 `/etc/fluentd/fluent.conf`
+
 ## Configurable ENV variables
 
 Environment variable below are configurable to control how to execute fluentd process:
@@ -59,12 +65,12 @@ Files below are automatically included in build process:
 ### Testing
 
 ```
-docker run --log-driver=fluentd --log-opt fluentd-address=192.168.0.1:24224 IMAGE echo "Hello Fluentd"  
+docker run --log-driver=fluentd --log-opt fluentd-address=192.168.0.1:24224 IMAGE echo "Hello Fluentd"
 ```
 
 Should produce a log-file with `Hello Fluentd`, depending on you `fluent.conf` file.
 
-### References 
+### References
 
 [Docker Logging | fluentd.org](http://www.fluentd.org/guides/recipes/docker-logging)
 

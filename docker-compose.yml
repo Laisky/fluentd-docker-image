@@ -1,0 +1,40 @@
+version: "2"
+services:
+  # mongodb:
+  #   image: mongo:3.2
+  #   restart: always
+  #   logging:
+  #     driver: syslog
+  #     options:
+  #       syslog-facility: local6
+  #       tag: mongodb
+  #   networks:
+  #     - gargantua
+  #   expose:
+  #     - "27017"
+  #   ports:
+  #     - 27016:27017
+  #   volumes:
+  #     - /var/lib/mongodb:/data/db
+
+  fluentd:
+    # image: ppcelery/fluentd-docker-image
+    image: fluentd
+    restart: always
+    # logging:
+    #   driver: syslog
+    #   options:
+    #     tag: fluentd
+    volumes:
+      - /var/log/nginx:/var/log/nginx
+      - /var/lib/fluentd:/fluentd/log
+      - /etc/fluentd:/fluentd/etc
+    external_links:
+      - mongodb:mongodb
+    ports:
+      - 24224:24224
+
+networks:
+  default:
+    external:
+      name: docker_gargantua

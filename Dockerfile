@@ -14,10 +14,11 @@ RUN apk --no-cache --update add \
     echo 'gem: --no-document' >> /etc/gemrc && \
     gem install fluentd -v 0.12.21 && \
     gem install fluent-plugin-mongo && \
+    gem install bson_ext && \
     apk del build-base ruby-dev && \
     rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
-RUN adduser -D -g '' -u 1000 -h /home/fluent fluent
+RUN adduser -D -g 'adm' -u 1000 -h /home/fluent fluent
 RUN chown -R fluent:fluent /home/fluent
 
 # for log storage (maybe shared with host)
