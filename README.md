@@ -23,6 +23,7 @@ This image uses Alpine Linux. If you want to use Ubuntu based image, use `ubuntu
 
   - 增加 docker-compose
   - 修改 Dockerfile 增加 `fluent-plugin-mongo`
+  - 修改用户为 root
   - 本地配置文件放在 `/etc/fluentd/fluent.conf`
 
 ## Configurable ENV variables
