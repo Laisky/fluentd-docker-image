@@ -19,7 +19,6 @@ services:
 
   fluentd:
     image: ppcelery/fluentd-docker-image
-    image: fluentd
     restart: always
     logging:
       driver: syslog
