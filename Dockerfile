@@ -7,6 +7,7 @@ RUN sudo gem install fluent-plugin-elasticsearch -v 2.5.0 \
     && sudo gem install fluent-plugin-concat -v 2.1.0 \
     && sudo gem install fluent-plugin-rewrite-tag-filter -v 2.0.2 \
     && sudo gem install fluent-plugin-kafka -v 0.6.3 \
+    && sudo gem install fluent-plugin-cadvisor -v 0.3.1 \
     && sudo gem install fluent-plugin-flowcounter -v 1.3 \
     && sudo gem sources --clear-all \
     && apk del .build-deps \
