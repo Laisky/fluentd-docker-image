@@ -15,8 +15,9 @@ RUN sudo gem install fluent-plugin-elasticsearch -v 2.5.0 \
     && rm -rf /var/cache/apk/* \
         /home/fluent/.gem/ruby/2.3.0/cache/*.gem
 
-RUN mkdir -p /data/log/td-agent/buffer/ \
-    && chmod -R 777 /data/log/td-agent/buffer
+RUN mkdir -p /data/log/td-agent/buffer/
 
 COPY fluent.conf /fluentd/etc/
 ENV FLUENTD_CONF="fluent.conf"
+
+ENTRYPOINT exec fluentd -c /fluentd/etc/${FLUENTD_CONF} -p /fluentd/plugins $FLUENTD_OPT
